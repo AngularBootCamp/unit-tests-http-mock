@@ -1,7 +1,6 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed, async as asynctest, inject } from '@angular/core/testing';
-import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { SwService } from './sw.service';
 
