@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 const API_URL = 'https://api.angularbootcamp.com';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SwService {
 
   constructor(private http: HttpClient) { }

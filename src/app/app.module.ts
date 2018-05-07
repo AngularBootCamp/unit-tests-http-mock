@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SwService } from './sw.service';
 import { ToCapsPipe, ContainsXPipe, CheckmarkPipe, FieldRangePipe } from './pipes';
 
 @NgModule({
@@ -17,9 +16,6 @@ import { ToCapsPipe, ContainsXPipe, CheckmarkPipe, FieldRangePipe } from './pipe
   imports: [
     BrowserModule,
     HttpClientModule
-  ],
-  providers: [
-    SwService
   ],
   bootstrap: [AppComponent]
 })
