@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed, async as asynctest, inject } from '@angular/core/testing';
+import { async as asynctest, inject, TestBed } from '@angular/core/testing';
 
 import { SwService } from './sw.service';
 
