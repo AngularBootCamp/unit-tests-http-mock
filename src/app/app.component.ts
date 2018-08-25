@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { SwService } from './sw.service';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  someNumber: number = 12;
   team: Observable<any[]>;
 
-  constructor(sw: SwService) {
-    this.team = sw.getList();
+  constructor(employee: EmployeeService) {
+    this.team = employee.getList();
   }
 }
