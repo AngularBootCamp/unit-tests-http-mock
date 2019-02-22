@@ -4,8 +4,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Employee } from './employee';
+import { environment } from './environment';
 
-const API_URL = 'https://api.angularbootcamp.com';
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getList(): Observable<string[]> {
-    return this.http.get<Employee[]>(API_URL + '/employees')
+    return this.http.get<Employee[]>(apiUrl + '/employees')
       .pipe(
         map(employees => employees.map(e => e.first_name)),
         map(names => names.sort()),

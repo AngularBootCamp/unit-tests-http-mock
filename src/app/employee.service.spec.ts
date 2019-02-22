@@ -3,6 +3,9 @@ import { TestBed } from '@angular/core/testing';
 
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
+import { environment } from './environment';
+
+const apiUrl = environment.apiUrl;
 
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
@@ -11,9 +14,6 @@ describe('Employee Service', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        EmployeeService
-      ],
       imports: [
         HttpClientTestingModule
       ]
@@ -47,7 +47,7 @@ describe('Employee Service', () => {
     );
 
     // expectOne will throw an error if this url has not been requested exactly one time
-    const req = httpTestingController.expectOne('/api/employees');
+    const req = httpTestingController.expectOne(apiUrl + '/employees');
 
     expect(req.request.method).toEqual('GET');
 
@@ -66,7 +66,7 @@ describe('Employee Service', () => {
 
     service.getList().subscribe(data => employees = data);
 
-    const req = httpTestingController.expectOne('/api/employees');
+    const req = httpTestingController.expectOne(apiUrl + '/employees');
 
     const mockError = new ErrorEvent('Network Error', {message: 'connection timeout'});
     req.error(mockError);

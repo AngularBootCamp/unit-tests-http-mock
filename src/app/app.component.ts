@@ -8,7 +8,7 @@ import { EmployeeService } from './employee.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  team: Observable<any[]>;
+  team: Observable<string[]>;
 
   constructor(employee: EmployeeService) {
     this.team = employee.getList();
