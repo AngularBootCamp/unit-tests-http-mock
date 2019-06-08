@@ -12,19 +12,17 @@ const apiUrl = environment.apiUrl;
   providedIn: 'root'
 })
 export class EmployeeService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getList(): Observable<string[]> {
-    return this.http.get<Employee[]>(apiUrl + '/employees')
-      .pipe(
-        map(employees => employees.map(e => e.first_name)),
-        map(names => names.sort()),
-        catchError(err => {
-          console.error('handling error within getEmployees()', err);
-          const fakeData = ['no employees could be loaded'];
-          return of(fakeData);
-        })
-      );
+    return this.http.get<Employee[]>(apiUrl + '/employees').pipe(
+      map(employees => employees.map(e => e.first_name)),
+      map(names => names.sort()),
+      catchError(err => {
+        console.error('handling error within getEmployees()', err);
+        const fakeData = ['no employees could be loaded'];
+        return of(fakeData);
+      })
+    );
   }
 }

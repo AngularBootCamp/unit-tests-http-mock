@@ -1,4 +1,7 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { Employee } from './employee';
@@ -10,13 +13,11 @@ const apiUrl = environment.apiUrl;
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let testData: Partial<Employee>[];
+  let testData: Array<Partial<Employee>>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ]
+      imports: [HttpClientTestingModule]
     });
 
     httpTestingController = TestBed.get(HttpTestingController);
@@ -41,13 +42,16 @@ describe('Employee Service', () => {
     let employees: string[] = [];
 
     // The act of subscribing triggers the http call
-    service.getList().subscribe(data =>
-      // This line will execute after the call to req.flush(testData)
-      employees = data
+    service.getList().subscribe(
+      data =>
+        // This line will execute after the call to req.flush(testData)
+        (employees = data)
     );
 
     // expectOne will throw an error if this url has not been requested exactly one time
-    const req = httpTestingController.expectOne(apiUrl + '/employees');
+    const req = httpTestingController.expectOne(
+      apiUrl + '/employees'
+    );
 
     expect(req.request.method).toEqual('GET');
 
@@ -64,11 +68,15 @@ describe('Employee Service', () => {
   it('should handle an http error', () => {
     let employees: string[] = [];
 
-    service.getList().subscribe(data => employees = data);
+    service.getList().subscribe(data => (employees = data));
 
-    const req = httpTestingController.expectOne(apiUrl + '/employees');
+    const req = httpTestingController.expectOne(
+      apiUrl + '/employees'
+    );
 
-    const mockError = new ErrorEvent('Network Error', {message: 'connection timeout'});
+    const mockError = new ErrorEvent('Network Error', {
+      message: 'connection timeout'
+    });
     req.error(mockError);
 
     expect(employees).toEqual(['no employees could be loaded']);
