@@ -116,6 +116,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "unit-tests-http-mock"
 }
