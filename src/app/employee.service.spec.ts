@@ -13,19 +13,19 @@ const apiUrl = environment.apiUrl;
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let testData: Array<Partial<Employee>>;
+  let testEmployee: Array<Partial<Employee>>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(EmployeeService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(EmployeeService);
 
     // Initialize data in the beforeEach to ensure each test case gets
     // an unmodified copy of the test data.
-    testData = [
+    testEmployee = [
       {
         first_name: 'Sara'
       },
@@ -38,14 +38,14 @@ describe('Employee Service', () => {
     ];
   });
 
-  it('should return the data from the backend', () => {
+  it('should return the employees from the backend', () => {
     let employees: string[] = [];
 
     // The act of subscribing triggers the http call
     service.getList().subscribe(
-      data =>
-        // This line will execute after the call to req.flush(testData)
-        (employees = data)
+      list =>
+        // This line will execute after the call to req.flush(testEmployee)
+        (employees = list)
     );
 
     // expectOne will throw an error if this url has not been requested exactly one time
@@ -55,8 +55,8 @@ describe('Employee Service', () => {
 
     expect(req.request.method).toEqual('GET');
 
-    // This line causes the Observable returned by http call to emit the testData
-    req.flush(testData);
+    // This line causes the Observable returned by http call to emit the testEmployee
+    req.flush(testEmployee);
 
     // Test result as well as verify our test really runs synchronously
     expect(employees).toEqual(['Bob', 'Joe', 'Sara']);
@@ -68,7 +68,7 @@ describe('Employee Service', () => {
   it('should handle an http error', () => {
     let employees: string[] = [];
 
-    service.getList().subscribe(data => (employees = data));
+    service.getList().subscribe(list => (employees = list));
 
     const req = httpTestingController.expectOne(
       apiUrl + '/employees'
