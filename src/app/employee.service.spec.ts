@@ -13,7 +13,7 @@ const apiUrl = environment.apiUrl;
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let testEmployee: Array<Partial<Employee>>;
+  let testEmployee: Partial<Employee>[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
