@@ -27,13 +27,13 @@ describe('Employee Service', () => {
     // an unmodified copy of the test data.
     testEmployee = [
       {
-        first_name: 'Sara'
+        firstName: 'Sara'
       },
       {
-        first_name: 'Joe'
+        firstName: 'Joe'
       },
       {
-        first_name: 'Bob'
+        firstName: 'Bob'
       }
     ];
   });

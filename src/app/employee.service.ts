@@ -16,7 +16,7 @@ export class EmployeeService {
 
   getList(): Observable<string[]> {
     return this.http.get<Employee[]>(apiUrl + '/employees').pipe(
-      map(employees => employees.map(e => e.first_name)),
+      map(employees => employees.map(e => e.firstName)),
       map(names => names.sort()),
       catchError(err => {
         console.error('handling error within getEmployees()', err);
