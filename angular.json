@@ -1,6 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject": "unit-tests-http-mock",
   "newProjectRoot": "projects",
   "projects": {
     "unit-tests-http-mock": {
