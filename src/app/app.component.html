@@ -1,18 +1,15 @@
 <a
   href="https://developers.livechatinc.com/blog/angular-dependency-injection-components/"
 >
-  <button class="btn">Great Reference on Testing</button>
+  Great Reference on Testing
 </a>
-<a href="https://angular.io/guide/testing">
-  <button class="btn">Testing Docs</button>
-</a>
+-
+<a href="https://angular.io/guide/testing">Testing Docs</a>
 
-<section class="card">
-  <div class="card-content">
-    <div class="card-title">Employee team</div>
+<article>
+  <header>Employee team</header>
 
-    <span *ngFor="let e of team | async">
-      {{ e }}
-    </span>
-  </div>
-</section>
+  <span *ngFor="let e of team | async">
+    {{ e }}
+  </span>
+</article>
