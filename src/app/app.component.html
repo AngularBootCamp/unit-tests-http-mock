@@ -9,7 +9,9 @@
 <article>
   <header>Employee team</header>
 
-  <span *ngFor="let e of team | async">
-    {{ e }}
-  </span>
+  @for (e of team | async; track e) {
+    <span>
+      {{ e }}
+    </span>
+  }
 </article>
